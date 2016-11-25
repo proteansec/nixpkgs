@@ -6051,13 +6051,15 @@ in {
   docker = buildPythonPackage rec {
     name = "docker-py-${version}";
     version = "1.10.6";
-    disabled = isPy3k;
 
     src = pkgs.fetchurl {
       url = "mirror://pypi/d/docker-py/${name}.tar.gz";
       sha256 = "05f49f6hnl7npmi7kigg0ibqk8s3fhzx1ivvz1kqvlv4ay3paajc";
     };
 
+    LC_ALL="en_US.UTF-8";
+
+    buildInputs = [ pkgs.glibcLocales ];
     propagatedBuildInputs = with self; [
       six
       requests2
@@ -6067,7 +6069,7 @@ in {
       docker_pycreds
     ];
 
-    # Version conflict
+    # Flake8 version conflict
     doCheck = false;
 
     meta = {
