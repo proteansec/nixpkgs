@@ -22421,6 +22421,8 @@ in {
 
   });
 
+  rpm = (pkgs.rpm.override{inherit python;});
+
   rpy2 = buildPythonPackage rec {
     name = "rpy2-2.8.2";
     disabled = isPyPy;
