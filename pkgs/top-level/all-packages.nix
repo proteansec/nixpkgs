@@ -13571,8 +13571,6 @@ in
     stdenv = overrideCC stdenv gcc49;
   };
 
-  koji = callPackage ../tools/package-management/koji { };
-
   konversation = qt5.callPackage ../applications/networking/irc/konversation/1.6.nix { };
 
   krita = qt5.callPackage ../applications/graphics/krita {
