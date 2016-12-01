@@ -26010,7 +26010,14 @@ in {
       sha256 = "14m13xa5sc7iqq2j1wsd2klcwaihqlhz2l9lmn92dks2yc8hplcr";
     };
 
+    buildInputs = with self; [ nose jinja2 mock pytest ];
     propagatedBuildInputs = with self; [ pyyaml ];
+
+    doCheck = false;
+
+    checkPhase = ''
+      py.test
+    '';
 
     meta = {
       description = "Media asset management for Python, with glue code for various web frameworks";
