@@ -524,8 +524,8 @@ in {
         chmod -R ug+rwX,o-rwx+X ${cfg.statePath}/
 
         # Install the shell required to push repositories
-        ln -fs ${pkgs.writeText "config.yml" gitlabShellYml} "$GITLAB_SHELL_CONFIG_PATH"
-        ln -fs ${cfg.packages.gitlab-shell}/hooks "$GITLAB_SHELL_HOOKS_PATH"
+        ln -fs ${pkgs.writeText "config.yml" gitlabShellYml} "${gitlabEnv.GITLAB_SHELL_CONFIG_PATH}"
+        ln -fs ${cfg.packages.gitlab-shell}/hooks "${gitlabEnv.GITLAB_SHELL_HOOKS_PATH}"
         ${cfg.packages.gitlab-shell}/bin/install
 
         if [ "${cfg.databaseHost}" = "127.0.0.1" ]; then
